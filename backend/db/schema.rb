@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2022_09_06_075216) do
     t.string "name"
     t.integer "quantity"
     t.integer "price"
+    t.integer "category_id"
+    t.integer "farmer_id"
   end
 
 end

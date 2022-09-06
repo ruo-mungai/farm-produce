@@ -4,6 +4,8 @@ class CreateProduct < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :quantity
       t.integer :price
+      t.integer :category_id
+      t.integer :farmer_id
     end
   end
 end
