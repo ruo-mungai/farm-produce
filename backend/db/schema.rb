@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_074911) do
+ActiveRecord::Schema.define(version: 2022_09_06_075216) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "farmers", force: :cascade do |t|
     t.string "name"
     t.string "tel"
     t.string "location"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.integer "price"
   end
 
 end
