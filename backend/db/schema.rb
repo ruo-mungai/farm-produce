@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_09_06_075216) do
     t.integer "price"
     t.integer "category_id"
     t.integer "farmer_id"
+    t.datetime "delivered_on"
   end
 
 end

@@ -6,6 +6,7 @@ class CreateProduct < ActiveRecord::Migration[6.1]
       t.integer :price
       t.integer :category_id
       t.integer :farmer_id
+      t.timestamp :delivered_on 
     end
   end
 end
