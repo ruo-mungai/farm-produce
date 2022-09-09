@@ -43,10 +43,6 @@ function ProdoctD() {
           <th>Price</th>
           <th>Category_id</th>
           <th>Farmer_id</th>
-
-          {/* <th>Category</th>
-          <th>Quantity (Kg)</th>
-          <th>Price</th> */}
         </tr>
         {product.map((product) => (
           <tr key={product.id}>
