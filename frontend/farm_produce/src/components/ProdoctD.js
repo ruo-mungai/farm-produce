@@ -49,7 +49,7 @@ function ProdoctD() {
             <td>{product.name}</td>
             <td>{product.quantity}</td>
             <td>{product.price}</td>
-            <td>{product.category_id}</td>
+            <td>{product.category_id }</td>
             <td>{product.farmer_id}</td>
             <td>  <Button type='submit' color='primary' variant="contained" style={btnstyle}>Edit</Button> </td>
           </tr>
