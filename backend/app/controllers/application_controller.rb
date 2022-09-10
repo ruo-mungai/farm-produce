@@ -48,4 +48,10 @@ get '/product' do
     pr=Product.all
     pr.to_json  
    end
+
+
+get '/category' do 
+    cat=Category.all
+    cat.to_json  
+   end
 end
