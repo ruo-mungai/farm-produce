@@ -44,6 +44,14 @@ class ApplicationController < Sinatra::Base
     pr.to_json
     end
 
+    post '/f' do 
+    pr=Farmer.create(
+      name: params[:name],
+      tel:params[:tel],
+      location:params[:location])
+    pr.to_json
+    end
+
 get '/product' do 
     pr=Product.all
     pr.to_json  
