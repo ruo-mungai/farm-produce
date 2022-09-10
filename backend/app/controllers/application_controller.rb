@@ -3,8 +3,7 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
  
   get '/farmers' do
-    far= Farmer.all
-
+    far=Farmer.all
     far.to_json(include: {
       products: { only: [:name, :quantity, :price], include: {
         category: { only: [:name] }
@@ -12,28 +11,27 @@ class ApplicationController < Sinatra::Base
     })
   end
 
-   get '/category' do
-    cat= Category.all
-    cat.to_json
+  delete '/farmers/:id' do
+     farmer= Farmer.find(params[:id])
+   
+       farmer.destroy
+       farmer.to_json
+  end
+
+   get '/product/subtotal/:id' do
+    cat= Farmer.find(params[:id]).products.map do |t|
+      t.price
+    end
+    cat.sum.to_json
    end
 
-  get '/farmer/:name' do |n|
-  
-  test=Farmer.find_by(name: params[:name] )
-  test.to_json
-end
   
   get '/total' do
     tot=Product.all.map do |t|
         t.price
     end
     tot.sum.to_json             
-  end
-
-  get '/' do
-  test='Hello world!'
-  test.to_json
-end 
+  end 
 
   post '/p' do 
     pr=Product.create(
@@ -46,18 +44,8 @@ end
     pr.to_json
     end
 
-    post '/farmer' do
-      far=Farmers.create(
-        name: params[:name],
-        tel:params[:tel],
-        location:params[:location])
-      far.to_json
-      end
-
-    post '/category' do
-      ca=Category.create(
-        name: params[:name])
-      ca.to_json
-      end
-    
+get '/product' do 
+    pr=Product.all
+    pr.to_json  
+   end
 end

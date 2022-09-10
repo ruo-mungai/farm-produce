@@ -16,6 +16,8 @@ Product.destroy_all
     location: "Patiana Estate"
  )
 
+
+
  c1=Category.create(name: "Animal Product")
  c2=Category.create(name: "Garden Products")
 
