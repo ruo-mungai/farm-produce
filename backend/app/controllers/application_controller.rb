@@ -36,6 +36,14 @@ class ApplicationController < Sinatra::Base
     tot.sum.to_json             
   end 
 
+
+
+  get '/category' do
+    cat=Category.all
+        
+    cat.sum.to_json             
+  end 
+
   post '/p' do 
     pr=Product.create(
       name: params[:name],
