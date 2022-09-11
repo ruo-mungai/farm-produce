@@ -13,11 +13,14 @@ class ApplicationController < Sinatra::Base
 
   delete '/farmers/:id' do
      farmer= Farmer.find(params[:id])
-   
-       farmer.destroy
+      
+     farmer.products.destroy_all
+     farmer.destroy
+      
        farmer.to_json
+  
   end
-
+  
    get '/product/subtotal/:id' do
     cat= Farmer.find(params[:id]).products.map do |t|
       t.price
@@ -57,9 +60,13 @@ get '/product' do
     pr.to_json  
    end
 
-
-get '/category' do 
-    cat=Category.all
-    cat.to_json  
-   end
+patch '/product/:id' do
+  product= Product.find(params[:id])
+  product.update(
+   name: params[:name],
+      quantity:params[:quantity],
+      price:params[:price]
+  )
+  product.to_json
+end
 end
