@@ -1,84 +1,87 @@
-import React,{ useState,useEffect} from 'react'
-import "../App.css"
-import { Button } from '@material-ui/core'
+import React from "react";
+import "../App.css";
+import { Button } from "@material-ui/core";
 
+// send props to home
+function Home({ farmer, setFarmer ,setTotal, total ,handleDelete}) {
+  const btnstyle = { margin: "8px 0" };
 
-
-function Home({farmer ,setFarmer}) {
-
- const [total, setTotal] = useState([]);
- console.log(farmer)
- const btnstyle={margin:'8px 0'}
-
- 
-  function handleDelete(id) {
-    fetch(`http://localhost:9292/farmers/${id}`, {
-      method: "DELETE",
-    })
-      .then((r) => r.json())
-      .then(() => {
-        const  deleteFarmer= farmer.filter((product) => product.id !== id);
-        setFarmer(deleteFarmer);
-      });
-  }
-  
-  
-  useEffect(() => {
-    fetch(`http://localhost:9292/total`)
-    .then(response => response.json())
-    .then((data) => {
-     
-     setTotal(data)
-    
-    })
-  }, [])
-
- 
-
-
+//map the data in props
   return (
-   
-    <div className="app" >
-     
-        <table>
-      <tbody>
-        <tr>
-          <th>Name</th>
-          <th>Tel</th>
-          <th>Location</th>
-          <th>Product</th>
-
-          <th>Category</th>
-          <th>Quantity (Kg)</th>
-          <th>Price</th>
-        </tr>
-        {farmer.map((farmer) => (
-          <tr key={farmer.id} >
-            <td>{farmer.name}</td>
-            <td>{farmer.tel}</td>
-            <td>{farmer.location}</td>
-                {farmer.products.map((pro)=>
-             <>
-            <td
-            >{pro.name}</td> 
-            <td>{pro.category.name}</td>
-            <td>{pro.quantity}</td>
-             <td>{pro.price}</td>
-            </> )}
-            <td>  <Button type='submit' color='primary' variant="contained" style={btnstyle} onClick={(e) => (
-                 handleDelete(farmer.id))}>Delete Farmer</Button> </td>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Tel</th>
+            <th>Location</th>
+            <th>Product supplied</th>
           </tr>
-         
-        ))}
-      </tbody>
-      
-    </table>
-    <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Total Ksh: {total}</Button>
-    
- 
+
+          {farmer.map((farmer) => (
+            <tr key={farmer.id}>
+              <td>{farmer.name}</td>
+              <td>{farmer.tel}</td>
+              <td>{farmer.location}</td>
+              <tr>
+                <th>Product</th>
+                <th>Quantity (Kg)</th>
+                <th>Price</th>
+              </tr>
+
+              {farmer.products.map((pro) => (
+                <div key={pro.id} style={{ display: "flex", width: "auto" }}>
+                  <td>{pro.name}</td>
+                  <td>{pro.quantity}</td>
+                  <td>{pro.price}</td>
+                </div>
+              ))}
+
+              <tfoot>
+                <tr>
+                  <Button
+                    type="submit"
+                    color="primary"
+                    variant="contained"
+                    style={btnstyle}
+                  >
+                    {" "}
+                    Total Ksh:
+                    {farmer.products.reduce(
+                      (total, currentValue) =>
+                        (total = total + currentValue.price),
+                      0
+                    )}
+                  </Button>
+                </tr>
+              </tfoot>
+              <td>
+                <Button
+                  type="submit"
+                  color="secondary"
+                  variant="contained"
+                  style={btnstyle}
+                  onClick={(e) => handleDelete(farmer.id)}
+                >
+                  Delete Farmer
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <Button
+        type="submit"
+        color="primary"
+        variant="contained"
+        style={btnstyle}
+        fullWidth
+      >
+        Total Ksh: {total}
+      </Button>
     </div>
- 
   );
 }
 
-export default Home
+export default Home;
