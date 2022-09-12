@@ -1,11 +1,13 @@
 # farm-produce
 
 Farm produce app is an app for collecting or buying produce from farmers.
+
 The project has backend and frontend.
 
 ## Backend
 
 It is built with Rack,Sinatra,ActiveRecords and Ruby.
+
 It's where all the database relations are defined and routes created.
 
 ## Frontend
