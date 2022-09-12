@@ -32,7 +32,7 @@ Ruby,React,ActiveRecords and Sinatra
 
 Project [Github](https://github.com/ruo-mungai/farm-produce)
 
-[Live link](ruo-mungai.github.io/famer-app/)
+[Live link](https://ruo-mungai.github.io/famer-app/)
 
 ## Installation
 
