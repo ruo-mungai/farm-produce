@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
   get '/category' do
     cat=Category.all
         
-    cat.sum.to_json             
+    cat.to_json            
   end 
 
   post '/p' do 
