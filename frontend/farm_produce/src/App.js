@@ -32,7 +32,7 @@ function App() {
   }
 //get all farmers
   useEffect(() => {
-    fetch("https://farm-pro1.herokuapp.com/farmers")
+    fetch("http://localhost:9292/farmers")
       .then((response) => response.json())
       .then((data) => {
         setFarmer(data);
@@ -41,7 +41,7 @@ function App() {
 
 //get the total of all products
   useEffect(() => {
-    fetch(`https://farm-pro1.herokuapp.com/total`)
+    fetch(`http://localhost:9292/total`)
       .then((response) => response.json())
       .then((data) => {
         setTotal(data);
@@ -50,7 +50,7 @@ function App() {
 
 //get category data
   useEffect(() => {
-    fetch("https://farm-pro1.herokuapp.com/category")
+    fetch("http://localhost:9292/category")
       .then((response) => response.json())
       .then((data) => {
         setCategory(data);
@@ -59,7 +59,7 @@ function App() {
 
   //Delete a farmer and his products
   function handleDelete(id) {
-    fetch(`https://farm-pro1.herokuapp.com/farmers/${id}`, {
+    fetch(`http://localhost:9292/farmers/${id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
@@ -70,7 +70,7 @@ function App() {
   }
     //get all products
    useEffect(() => {
-     fetch(`https://farm-pro1.herokuapp.com/product`)
+     fetch(`http://localhost:9292/product`)
        .then((response) => response.json())
        .then((data) => {
          setProduct(data);
