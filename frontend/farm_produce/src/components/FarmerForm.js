@@ -18,7 +18,7 @@ function FarmerForm({ textStyle, button, newFarmer }) {
     };
 
     //send a post request
-    fetch("https://farm-pro1.herokuapp.com/f", {
+    fetch("http://localhost:9292/f", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
